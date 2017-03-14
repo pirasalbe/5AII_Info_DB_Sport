@@ -69,6 +69,7 @@ having Count(S.Amount) Between 2 and 4 and Sum(Won)>0;
 7. Per ogni giocatore trovare il nome e la massima penalita’ pagata nel 1980.
 
 
+
 =======================================================================
 8. Trovare il nome dei giocatori per cui l’ammontare delle penalita’ pagate nel
 1980 e’ inferiore alla penalita’ massima pagata dal giocatore stesso.
