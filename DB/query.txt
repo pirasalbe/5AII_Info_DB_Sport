@@ -11,18 +11,13 @@ From Teams T);
 2. Trovare il codice di tutti i giocatori che hanno giocato solamente nelle squadre
 in cui ha giocato il giocatore numero 57.
 
-Select PlayerNo
+Select PlayerNo 
+From Games
+Where PlayerNo not in (Select PlayerNo
 From Games G
-Where TeamNo in (Select TeamNo
+Where TeamNo not in (Select TeamNo
 From Games
-Where PlayerNo = 57) AND (Select Count(TeamNo)
-From Games
-Where PlayerNo = 57
-Group by PlayerNo)
- = (Select Count(TeamNo)
-From Games S
-Where S.PlayerNo = G.PlayerNo
-Group by S.PlayerNo);
+Where PlayerNo = 57));
 
 =======================================================================
 3. Trovare il codice di tutti i giocatori che hanno giocato almeno in tutte le
@@ -38,6 +33,7 @@ Where PlayerNo = 57);
 4. Trovare il codice di tutti i giocatori che hanno giocato in tutte e sole le stesse
 squadre in cui ha giocato il giocatore numero 57.
 
+#########errore
 Select PlayerNo
 From Games G
 Where TeamNo in (Select TeamNo
