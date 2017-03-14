@@ -58,6 +58,12 @@ From Penalties);
 hanno ricevuto almeno 2 e non piu’ di 4 penalita’, e che hanno vinto almeno
 una partita.
 
+Select P.Name, Min(S.Amount)
+From (Players P inner join Penalties S on P.PlayerNo=S.PlayerNo)
+inner join Games G on G.PlayerNo = P.PlayerNo
+Where Sex="M" 
+Group by P.PlayerNo
+having Count(S.Amount) Between 2 and 4 and Sum(Won)>0;
 
 =======================================================================
 7. Per ogni giocatore trovare il nome e la massima penalita’ pagata nel 1980.
