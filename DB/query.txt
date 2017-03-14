@@ -46,7 +46,12 @@ Where PlayerNo = 57));
 l’ammontare complessivo delle penalita’ pagate e’ superiore alla media delle
 penalita’ complessivamente pagate da tutti i giocatori.
 
-
+Select P.Name, P.Initials
+From Players P inner join Penalties S on P.PlayerNo=S.PlayerNo
+Where Sex="M" 
+Group by P.PlayerNo
+having Sum(S.Amount) > (Select AVG(Amount)
+From Penalties);
 
 =======================================================================
 6. Trovare il nome del giocatore e la penalita’ minima pagata per i giocatori che
