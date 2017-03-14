@@ -11,7 +11,18 @@ From Teams T);
 2. Trovare il codice di tutti i giocatori che hanno giocato solamente nelle squadre
 in cui ha giocato il giocatore numero 57.
 
-
+Select PlayerNo
+From Games G
+Where TeamNo in (Select TeamNo
+From Games
+Where PlayerNo = 57) AND (Select Count(TeamNo)
+From Games
+Where PlayerNo = 57
+Group by PlayerNo)
+ = (Select Count(TeamNo)
+From Games S
+Where S.PlayerNo = G.PlayerNo
+Group by S.PlayerNo);
 
 =======================================================================
 3. Trovare il codice di tutti i giocatori che hanno giocato almeno in tutte le
@@ -27,11 +38,24 @@ Where PlayerNo = 57);
 4. Trovare il codice di tutti i giocatori che hanno giocato in tutte e sole le stesse
 squadre in cui ha giocato il giocatore numero 57.
 
+Select PlayerNo
+From Games G
+Where TeamNo in (Select TeamNo
+From Games
+Where PlayerNo = 57) AND (Select Count(TeamNo)
+From Games
+Where PlayerNo = 57
+Group by PlayerNo)
+ = (Select Count(TeamNo)
+From Games S
+Where S.PlayerNo = G.PlayerNo
+Group by S.PlayerNo);
 
 =======================================================================
 5. Trovare il nome e le iniziali dei giocatori di sesso maschile per cui
 l’ammontare complessivo delle penalita’ pagate e’ superiore alla media delle
 penalita’ complessivamente pagate da tutti i giocatori.
+
 
 
 =======================================================================
