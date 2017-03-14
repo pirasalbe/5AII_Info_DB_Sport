@@ -1,0 +1,56 @@
+1. Trovare il codice di tutti i giocatori che hanno giocato in tutte le squadre
+riportate nella tabella squadre.
+
+Select distinct G.PlayerNo
+From Games G
+group by G.PlayerNo
+having count(TeamNo) = (Select count(*)
+From Teams T);
+
+=======================================================================
+2. Trovare il codice di tutti i giocatori che hanno giocato solamente nelle squadre
+in cui ha giocato il giocatore numero 57.
+
+
+
+=======================================================================
+3. Trovare il codice di tutti i giocatori che hanno giocato almeno in tutte le
+squadre in cui ha giocato il giocatore numero 57.
+
+Select distinct G.PlayerNo
+From Games G
+Where TeamNo = ALL(Select distinct TeamNo
+From Games
+Where PlayerNo = 57);
+
+=======================================================================
+4. Trovare il codice di tutti i giocatori che hanno giocato in tutte e sole le stesse
+squadre in cui ha giocato il giocatore numero 57.
+
+
+=======================================================================
+5. Trovare il nome e le iniziali dei giocatori di sesso maschile per cui
+l’ammontare complessivo delle penalita’ pagate e’ superiore alla media delle
+penalita’ complessivamente pagate da tutti i giocatori.
+
+
+=======================================================================
+6. Trovare il nome del giocatore e la penalita’ minima pagata per i giocatori che
+hanno ricevuto almeno 2 e non piu’ di 4 penalita’, e che hanno vinto almeno
+una partita.
+
+
+=======================================================================
+7. Per ogni giocatore trovare il nome e la massima penalita’ pagata nel 1980.
+
+
+=======================================================================
+8. Trovare il nome dei giocatori per cui l’ammontare delle penalita’ pagate nel
+1980 e’ inferiore alla penalita’ massima pagata dal giocatore stesso.
+
+
+=======================================================================
+9. Trovare il nome, il numero totale di partite vinte, il numero totale di partite
+perse e la media delle penalita’ pagate dai giocatori che hanno preso almeno 2
+penalita’ e hanno perso in totale un numero di gare maggiore a 2 e minore di
+10.
